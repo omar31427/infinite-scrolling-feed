@@ -2,22 +2,20 @@ const createError = require('http-errors');
 const path = require('path');
 const logger = require('morgan');
 const express = require('express');
+const postman = require('postman-api-client');
 
-const indexRouter = require('./routes/index');
-var apiRouter = require('./routes/users');
+
 
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-
+app.set('view engine', 'html');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
-app.use('/users', apiRouter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,7 +34,7 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    //res.render('error');
 });
 
 
