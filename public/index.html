@@ -3,6 +3,7 @@
 <head>
   <title></title>
   <script src="./index.js"></script>
+  <script src="./index.css"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
@@ -10,7 +11,13 @@
 <div class="container-fluid">
   <div class="row mt-3">
     <div class="col-3"> </div>
-    <div class="col-6">
+    <div class="col-12">
+      <div id = "date" class="card" style="display: none">
+        <form id = "dateForm">
+          <label for="startDate">Start Date:</label><br>
+          <input type="date" id="startDate" name="startDate"><br>
+        </form>
+      </div>
       <div class="card">
         <div class="card-title text-center mt-3">
           <h1 class="fieldTitle formTitle"> </h1>
@@ -27,9 +34,10 @@
 
           </form>
         </div>
-        <div style="display: none" id = "feed">
 
-        </div>
+      </div>
+      <div style="display: none" id = "feed">
+
       </div>
     </div>
     <div class="col-3"></div>
