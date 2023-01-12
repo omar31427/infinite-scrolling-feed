@@ -15,6 +15,9 @@ var NasaImages = (() => {
 
     }
     publicData.fetchImage = async function (newFeed) {
+
+
+
         const feedContainer = document.getElementById('feed');
 
 
@@ -127,36 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
             await NasaImages.fetchImage(false);
         }
     });
+    NasaImages.fetchImage(false);
 
-    document.getElementById("username").addEventListener('submit', async (event) => {
+   // const form = document.querySelector("form");
+    //const inputElement = form.querySelector("input[type='date']");
+    //inputElement.addEventListener("change", async (event) => {
+     //   const selectedDateString = event.target.value;
+      //  currDate = new Date(selectedDateString);
 
-        // we build the new product object from the form input:
-        let name = document.getElementById("user").value;
-        if (NasaImages.validateName(name) === " ") {
-            let userName = name;
-            document.getElementById("formDiv").style.display = "none";
-            document.getElementById("feed").style.display = "block";
-            document.getElementById("date").style.display = "block";
+        //await NasaImages.fetchImage(true);
 
-            await NasaImages.fetchImage(false);
-            NasaImages.newListener();
-        } else {
-            // if the product is not valid, we display the errors:
-            document.getElementById("errorAlert").innerHTML = NasaImages.validateName(name);
-
-        }
-
-    });
-
-    const form = document.querySelector("form");
-    const inputElement = form.querySelector("input[type='date']");
-    inputElement.addEventListener("change", async (event) => {
-        const selectedDateString = event.target.value;
-        currDate = new Date(selectedDateString);
-
-        await NasaImages.fetchImage(true);
-
-    });
+    //});
     // the sort button handler:
 });
-
