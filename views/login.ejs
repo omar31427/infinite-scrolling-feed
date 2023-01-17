@@ -1,0 +1,32 @@
+<%- include('includes/headBeginning.ejs')%>
+<%-include('includes/headEnd.ejs')%>
+</div>
+<div class="card">
+    <div class="card-title text-center mt-3">
+        <h1 class="fieldTitle formTitle"> </h1>
+    </div>
+    <div class="card-body" id = "formDiv">
+        <form class="row g-3 needs-validation" method="post" id = "username">
+            <div class="mb-3 col-lg-4 col-md-4">
+                <label for="user" class="form-label">Your username</label>
+                <br>
+                <input type="username" name="user" id="user" required>
+                <br>
+                <label for="password" class="form-label">Your password</label>
+                <br>
+                <input type="password" pattern=".{8,}" title="8 characters minimum"  name="password" id="password" aria-describedby="emailHelp" required>
+                <br>
+                <div id="errorAlert"></div>
+                <br>
+                <form method="post" >
+                    <input class="btn btn-outline-primary" type="submit" value="LogIn" formaction="/feed">
+                </form>
+                <form method="post" >
+                    <input class="btn btn-outline-primary" type="submit" value="Register" formaction="/register">
+                </form>
+            </div>
+
+        </form>
+    </div>
+
+<%-include('includes/end.ejs')%>

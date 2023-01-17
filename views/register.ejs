@@ -1,35 +1,30 @@
 <%- include('includes/headBeginning.ejs')%>
 <%-include('includes/headEnd.ejs')%>
-        </div>
-        <div class="card-body" id = "formDiv">
-          <form class="row g-3 needs-validation" method="post" id = "username">
+<script src="/javascript/register.js"></script>
+</div>
+<div class="card">
+    <div class="card-title text-center mt-3">
+        <h1 class="fieldTitle formTitle">WELCOME TO REGISTER </h1>
+    </div>
+    <div class="card-body" id = "formDiv">
+        <form class="row g-3 needs-validation" method="post" >
             <div class="mb-3 col-lg-4 col-md-4">
-              <label for="user" class="form-label">choose a username</label>
-              <br>
-              <input type="username" name="user" id="user" required>
-              <br>
-              <label for="password" class="form-label">Your password</label>
-              <br>
-              <input type="password" pattern=".{8,}" title="8 characters minimum"  name="password" id="password" aria-describedby="emailHelp" required>
-              <br>
-              <div id="errorAlert"></div>
-              <br>
-              <button class="btn btn-outline-primary" type="button" id="login">login</button>
-              <button class="btn btn-outline-primary" type="button" id="register">register</button>
+                <label for="user" class="form-label">choose a username</label>
+                <br>
+                <input type="username" name="user" id="user" required>
+                <br>
+                <label for="email" class="form-label">choose your email</label>
+                <br>
+                <input type="email" pattern=".{8,}"   name="email" id="email" aria-describedby="emailHelp" required>
+                <br>
+                <div id="errorAlert"></div>
+                <br>
+                <form method="post" >
+                    <input class="btn btn-outline-primary" type="submit" value="Next" formaction="/feed">
+                </form>
             </div>
 
-          </form>
-        </div>
-
-      </div>
-      <div style="display: none" id = "feed">
-
-      </div>
+        </form>
     </div>
-    <div class="col-3"></div>
-  </div>
-</div>
-</body>
-</html>
 
 <%-include('includes/end.ejs')%>
