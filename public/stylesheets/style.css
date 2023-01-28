@@ -1,8 +1,22 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(/images/cover.jpeg);
+}
+.nav{
+  position: sticky;
+  top:0;
+  z-index:1030;
+}
+.a {
+  color: #00B7FF;
 }
 
-a {
-  color: #00B7FF;
+
+.errorAlert{
+  color: red;
+}
+
+.card{
+  display: inline-block;
 }
