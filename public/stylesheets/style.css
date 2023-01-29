@@ -22,6 +22,10 @@ body {
   color: red;
 }
 
+.successfulRegistration{
+  color: green;
+}
+
 .card{
   display: inline-block;
 }

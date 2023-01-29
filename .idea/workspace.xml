@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd1045ed-0682-4812-95e8-dd8f9f830a59" name="Changes" comment="">
+    <list default="true" id="fd1045ed-0682-4812-95e8-dd8f9f830a59" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/database.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/coverImg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/coverImg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascript/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascript/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/enterPassword.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/enterPassword.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/feed.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/feed.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/includes/headEnd.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/headEnd.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +53,16 @@
       <workItem from="1675014360491" duration="159000" />
       <workItem from="1675014558404" duration="95000" />
       <workItem from="1675014889403" duration="5964000" />
-      <workItem from="1675023507270" duration="1855000" />
+      <workItem from="1675023507270" duration="4378000" />
     </task>
+    <task id="LOCAL-00001" summary="commit">
+      <created>1675025723892</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675025723892</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,5 +78,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>

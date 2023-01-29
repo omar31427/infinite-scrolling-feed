@@ -10,7 +10,7 @@ const keys = ['keyboard cat']
 const db = require('../models');
 const {Model} = require("sequelize");
 const app = express();
-
+const bcrypt = require('bcrypt');
 router.use(session({ secret: 'somesecretkey'}))
 
 function isEmailOccupied(mail) {
@@ -32,7 +32,7 @@ function authentication(req,res,next){
 }
 /* GET home page. */
 router.get('/', authentication,(req,res)=> {
-  res.render('Login', {title: 'Login', error: ''})
+  res.render('Login', {title: 'Login', error: '', registrationMsg: ''})
 });
 
 router.post('/', function (req, res, next) {
@@ -44,21 +44,32 @@ router.post('/', function (req, res, next) {
     req.session.registerSuccess = false;
     res.render('login', {
       title: 'Login',
-      error:'Registration failed. Please try again faster'
+      error:'Registration failed. Please try again faster',
+      registrationMsg: ''
     })
-  } else {
-    db.Users.findOrCreate(
-        {where: {email: req.body.email.trim()},
-          defaults:{firstName:req.body.firstName.trim(),
-            lastName:req.body.lastName.trim(),
-            password:req.body.password.trim()}})
-        .then((created) => {
-          if(created[1])
-            res.render('login', {title: 'Login', error:''})
-          else
-            res.render('login', {title: 'Login', error:''})
-        }).catch(function(error) {
-      res.render('login', {title: 'Login', error:''})
+  } else
+  {
+    bcrypt.genSalt(10, (err, salt) => {
+
+      // Hash the password using the salt
+      bcrypt.hash(req.body.password.trim(), salt, (err, hash) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+        db.Users.findOrCreate(
+            {where: {email: req.body.email.trim()},
+              defaults:{firstName:req.body.firstName.trim(),
+                lastName:req.body.lastName.trim(),
+                password: hash}})
+            .then((created) => {
+              if(created[1])
+                res.render('login', {title: 'Login', registrationMsg:'registeration successful',error:''});
+              else
+                res.render('login', {title: 'Login', error:'registration failed, try again',registrationMsg:''});
+            }).catch(function(error) {
+          res.render('login', {title: 'Login', error:'', registrationMsg: ''})
+        });
+      });
     });
   }
 });
@@ -67,34 +78,41 @@ router.get('/feed', authentication, (req, res) => {
   if (req.session.logIn)
     res.render('feed', {title: 'Feed', userName: req.session.userName, email: req.session.email});
   else
-    res.render('login', {title: 'Login', error: 'Please login before proceeding'})
+    res.render('login', {title: 'Login', error: 'Please login before proceeding',registrationMsg:''})
 });
 
 router.post('/feed', function(req, res, next) {
-  if(req.session.logIn){
-    req.session.logIn = false;
 
-  }
-  return db.Users.findOne({where: {email: req.body.email.trim(), password: req.body.password.trim()}}).then((uname)=>{
-    req.session.logIn=true;
-    req.session.email = uname.email;
-    req.session.userName = uname.firstName;
-    res.render('feed',{title: 'Feed', userName: uname.firstName, email:uname.email});
+  //, password:
+  return db.Users.findOne({where: {email: req.body.email.trim()}}).then((uname)=>{
+    bcrypt.compare( req.body.password.trim(), uname.password, (err, isMatch) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      if (!isMatch) {
+        return res.render('login',{title: 'Login', error:'invalid Password',registrationMsg:''});
+      }
+      req.session.logIn=true;
+      req.session.email = uname.email;
+      req.session.userName = uname.firstName;
+      res.render('feed',{title: 'Feed', userName: uname.firstName, email:uname.email});
+    });
+
   }).catch((err)=>{
-    res.render('login', { title: 'Login', error: 'Mail or password incorrect' });
+    res.render('login', { title: 'Login', error: 'Mail or password incorrect',registrationMsg:'' });
   });
 
 });
 
 router.get('/register',  authentication,(req,res)=> {
-    res.render('register', {title: 'Login', error: 'your session has ended, please login again'})
+    res.render('register', {title: 'Register', error: 'your session has ended, please login again'});
 });
 
 router.get('/login', (req, res, next)=>{
   //finish session
   req.session.end;
   req.session.logIn = false;
-  res.render('login',{title:'login',error:''});
+  res.render('login',{title:'Login',error:'', registrationMsg: ''});
 });
 
 router.post('/register', function(req, res, next) {
