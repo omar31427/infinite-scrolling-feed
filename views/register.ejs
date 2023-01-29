@@ -2,19 +2,18 @@
 <%-include('includes/headEnd.ejs')%>
     <div class="card-body" id = "formDiv">
         <form class="row g-3 needs-validation" method="post" >
-            <div class="mb-3 col-lg-4 col-md-4">
+            <div class="mb-3 col-6">
                 <div class="mt-3">
                     <label for="user" class="form-label">FIRST NAME</label>
-                    <input type="username" name="firstName" id="firstName" required>    
+                    <input type="username" class="form-control" name="firstName" id="firstName" required>    
                 </div>
                 <div class="mt-3">
                     <label for="user" class="form-label">LAST NAME</label>
-                    <input type="username" name="lastName" id="lastName" required>    
+                    <input type="username" class="form-control" name="lastName" id="lastName" required>    
                 </div>
                 <div class="mt-3">
                     <label for="email" class="form-label">E-MAIL</label>
-                    <input type="email" pattern=".{8,}"   name="email" id="email" aria-describedby="emailHelp" required>    
-                </div>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required>                </div>
                 <div class="mt-3 errorAlert"><%=error%></div>
                 <div class="mt-3">
                     <form method="post" >

@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a64d60ba-191d-434a-b423-a62a62985901" name="Changes" comment="safety commit" />
+    <list default="true" id="fd1045ed-0682-4812-95e8-dd8f9f830a59" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/database.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/coverImg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/coverImg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascript/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascript/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/enterPassword.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/enterPassword.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/feed.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/feed.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/includes/headEnd.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/headEnd.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.ejs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +30,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2KxaoMuUeUE5wMv3BaYWi4UF9ff" />
+  <component name="ProjectId" id="2L0hmOWXbdfyJyIBY3pGKxMwZ96" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,7 +40,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/omara/OneDrive/Desktop/michal-ex5",
+    "last_opened_file_path": "C:/Users/omara/OneDrive/Desktop/ex6-omar-abdel-al",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -38,28 +52,31 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a64d60ba-191d-434a-b423-a62a62985901" name="Changes" comment="" />
-      <created>1674918862500</created>
+      <changelist id="fd1045ed-0682-4812-95e8-dd8f9f830a59" name="Changes" comment="" />
+      <created>1675014065163</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1674918862500</updated>
-      <workItem from="1674918864083" duration="22849000" />
+      <updated>1675014065163</updated>
+      <workItem from="1675014066360" duration="276000" />
+      <workItem from="1675014360491" duration="159000" />
+      <workItem from="1675014558404" duration="95000" />
+      <workItem from="1675014889403" duration="5964000" />
+      <workItem from="1675023507270" duration="1855000" />
     </task>
-    <task id="LOCAL-00001" summary="safety commit">
-      <created>1674949020259</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1674949020259</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="safety commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="safety commit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

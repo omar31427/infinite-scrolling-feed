@@ -17,6 +17,15 @@ var NasaImages = ( () => {
             // }
       //      });
   //  }, 30*1000);
+    publicData.noImages = function() {
+        alert("no images from selected date!");
+    }
+    publicData.sessionOver = function(){
+        alert("you need to log in again");
+    }
+    publicData.updateCurDate = function(date){
+        currDate = date;
+    }
     publicData.Comment = class Comment {
         constructor(image, email, userName, comment) {
             this.image = image;
@@ -27,12 +36,10 @@ var NasaImages = ( () => {
     }
 // Set a counter for the current item index
     let currentIndex = 0;
-    publicData.noImages = function () {
 
-    }
     publicData.fetchImage = async function (newFeed) {
         const feedContainer = document.getElementById('feed');
-
+        let wrongDate = false;
         if (!hasMore) 
             return;
         
@@ -44,19 +51,28 @@ var NasaImages = ( () => {
         // Load the next batch of items
         for (let i = 0; i < displayLimit; i++) {
 
-            currDate.setDate(currDate.getDate() - i);
-
             await fetch(`https://api.nasa.gov/planetary/apod?api_key=FcViT1WU2Rw1xBHN6d77P3dPJDKxo9F2K5bv53gF&date=${currDate.toISOString().split('T')[0]}`)
                 .then(response => response.json())
                 .then(html => {
+                    if(html.code === 400){
+                        throw Error("there are no pictures from this date");
+                    }
                     if (html.url === lastImgSrc)
                         return;
                     else
                         lastImgSrc = html.url;
                     publicData.displayImages(html);
-                }).catch(error => {
-                    console.log(error);
+                }).catch((error) => {
+                    if(error.toString() === "TypeError: Failed to fetch")
+                        publicData.sessionOver();
+                    else if(error.toString()==="Error: there are no pictures from this date"){
+                        if(!wrongDate) {
+                            wrongDate = true;
+                            publicData.noImages();
+                        }
+                    }
                 });
+            currDate.setDate(currDate.getDate() - 1);
         }
 
         // Remove the loading indicator
@@ -64,30 +80,10 @@ var NasaImages = ( () => {
         try {
             loadingIndicator.parentNode.removeChild(loadingIndicator);
         } catch(err){
-            console.log(err);
         }
         // Update the current index and the hasMore flag
         currentIndex += displayLimit;
         hasMore = true;
-    }
-
-    publicData.validateName = function (name) {
-        if (name.length >= 24) //
-            return "username must be at most 24 letters long";
-
-        if (!(name.match(/^[A-Za-z0-9]*$/)))
-            return "username can only contain letters and characters";
-        userName = name;
-        return " ";
-
-    }
-
-    publicData.setUserName = function (name) {
-        userName = name;
-    }
-
-    publicData.getUserName = function () {
-        return userName;
     }
 
     publicData.getComments = async function (imgUrl, date) {
@@ -96,7 +92,6 @@ var NasaImages = ( () => {
         let arr = await publicData.showComments(imgUrl).then((data) => {
             return data;
         }).catch((error) => {
-            console.log(error);
             return [];
         })
         for (let comment = 0; comment < arr.length; comment++){
@@ -144,13 +139,11 @@ var NasaImages = ( () => {
             body: JSON.stringify(img),
         }).then(function (response) {
             if(response.status === 300) {
-                console.log("1111111111111");
                 window.location.replace('/');
             }
             else
                 return response.json();
         }).catch((err)=>{
-            console.log(err);
         });
     }
 
@@ -169,11 +162,9 @@ var NasaImages = ( () => {
             body: JSON.stringify(curComment),
         }).then((response) => {
             if(response.status === 300) {
-                console.log("2222222222222222222");
                 window.location.replace('/');
             }
         }).catch((err)=>{
-            console.log(err);
         });
         publicData.getComments(curComment.image, event.target.parentElement.parentElement.parentElement.children[2].children[0].innerText);
         event.target.parentElement.parentElement.children[0].children[0].children[0].value = '';
@@ -201,11 +192,9 @@ var NasaImages = ( () => {
             if(response.status === 200)
                 publicData.getComments(img, date);
             if(response.status === 300) {
-                console.log("3333333333");
                 window.location.replace('/');
             }
         }).catch((error) => {
-            console.log(error);
         });
     }
 
@@ -231,8 +220,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
     const inputElement = form.querySelector("input[type='date']");
     inputElement.addEventListener("change", async (event) => {
-        const selectedDateString = event.target.value;
-        NasaImages.currDate = new Date(selectedDateString);
+        let selectedDateString = event.target.value;
+     //   NasaImages.currDate = new Date(selectedDateString);
+        NasaImages.updateCurDate(new Date(selectedDateString));
 
         await NasaImages.fetchImage(true);
 

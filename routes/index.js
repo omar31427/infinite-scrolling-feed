@@ -24,7 +24,7 @@ function isEmailOccupied(mail) {
 }
 function authentication(req,res,next){
   if(req.session.logIn) {
-    // console.log("#############################################"+req.session.userName);
+
     res.render('feed', {title: 'Feed', userName: req.session.userName, email: req.session.email});
   }else {
     next();
@@ -32,27 +32,19 @@ function authentication(req,res,next){
 }
 /* GET home page. */
 router.get('/', authentication,(req,res)=> {
-  res.render('login', {title: 'Login', error: ''})
+  res.render('Login', {title: 'Login', error: ''})
 });
-//router.get('/checkSession', function(req, res) {
- // if(req.cookie.maxAge)
-    //  res.json({ loggedIn:true });
-  //else
-   //   res.json({ loggedIn:false });
-//});
+
 router.post('/', function (req, res, next) {
   const cook = new Cookies(req, res, {keys: keys})
   if(req.session.logIn)
     req.session.logIn=false;
   const registerCookie = cook.get('RegisterCookie', {signed: true});
-  console.log(req.body.email);
-  console.log(req.body.firstName);
   if (!registerCookie) {
     req.session.registerSuccess = false;
     res.render('login', {
       title: 'Login',
-      error: '',
-      registerMsg: 'Registration failed. Please try again faster'
+      error:'Registration failed. Please try again faster'
     })
   } else {
     db.Users.findOrCreate(
@@ -71,12 +63,18 @@ router.post('/', function (req, res, next) {
   }
 });
 
-router.get('/feed',  authentication,(req,res)=>{
+router.get('/feed', authentication, (req, res) => {
+  if (req.session.logIn)
     res.render('feed', {title: 'Feed', userName: req.session.userName, email: req.session.email});
+  else
+    res.render('login', {title: 'Login', error: 'Please login before proceeding'})
 });
 
 router.post('/feed', function(req, res, next) {
-  
+  if(req.session.logIn){
+    req.session.logIn = false;
+
+  }
   return db.Users.findOne({where: {email: req.body.email.trim(), password: req.body.password.trim()}}).then((uname)=>{
     req.session.logIn=true;
     req.session.email = uname.email;
@@ -85,6 +83,7 @@ router.post('/feed', function(req, res, next) {
   }).catch((err)=>{
     res.render('login', { title: 'Login', error: 'Mail or password incorrect' });
   });
+
 });
 
 router.get('/register',  authentication,(req,res)=> {
@@ -116,7 +115,6 @@ router.post('/enterPassword', function(req, res, next) {
       res.render('enterPassword', {title: 'Set Password', mail: mail, firstName: req.body.firstName, lastName: req.body.lastName});
 
     }else {
-      console.log("email is not unique")
       req.session.registerSuccess = false;
       res.render('register', {title: 'Register', error: 'this email is already in use'});
     }
