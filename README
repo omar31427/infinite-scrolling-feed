@@ -1,5 +1,10 @@
-ex5
-this program wax supposed to create an infinite scrolling feed that shows pictures posted by nasa using their REST API, and users of the website could use a username
-and they could comment on those pictures.
+this program creates an infinite scrolling feed that shows pictures posted by nasa using their REST API, and users of the website could create an account with a username
+and password so they could comment on those pictures, the user would also be able to delete their comment, show pictures starting from a certain date and going back to
+the first image found in the API. 
+bcrypt is used to protect users passwords.
+the program uses a data base using sql-sequilize to save user info.
+the user would need to log in again if they leave the main page in any way(back,refresh,logout,etc...).
+responsive css.
+
 omar abdelal 
-316249911
+Linkedin: https://www.linkedin.com/in/omar-abdelal-485835221/
